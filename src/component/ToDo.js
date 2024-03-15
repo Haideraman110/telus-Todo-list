@@ -10,7 +10,7 @@ const ToDo = ({ id, email, mobile, handleDelete }) => {
         <p>{email}</p>
         <p>{mobile}</p>
 
-       <Icon><span class="material-icons-outlined" onClick={() => handleDelete(id)}>
+       <Icon ><span className="material-icons-outlined" onClick={() => handleDelete(id)}>
           delete
         </span></Icon>
 

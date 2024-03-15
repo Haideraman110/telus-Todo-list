@@ -4,8 +4,8 @@
     height: auto;
     width: auto;
     background-color: rgb(7, 107, 146);
-    margin-bottom: 10px;
-    padding: 20px;
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    border: 0.1rem solid whitesmoke;
+    border-radius: 0.5rem;
 }
