@@ -9,3 +9,22 @@
     border: 0.1rem solid whitesmoke;
     border-radius: 0.5rem;
 }
+
+/* phone */
+@media only screen and (max-width:600px){
+    .data_contianer{
+        display: block;
+        font-size: 1.6rem;
+    }
+   
+}
+
+
+/* tablets */
+@media only screen and (min-width:601px) and (max-width:900px){
+    .data_contianer{
+        display: block;
+        font-size: 1.6rem;
+    }
+   
+}
