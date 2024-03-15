@@ -6,6 +6,7 @@ import ToDo from './ToDo'
 const TodoContainer = ({datastodo,addformdata,handleDelete}) => {
   return (
     <>
+    <h1 style={{textAlign:'center',fontWeight:'bold',textTransform:'uppercase'}}>To Do List</h1>
     <div className='container cont'>
         <div className='row'>
             <div className='col'>
