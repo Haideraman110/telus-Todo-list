@@ -1,0 +1,11 @@
+.cont{
+    height: auto;
+    width: 50%;
+    background-color:rgb(13, 63, 83);
+    margin-top: 10px;
+    color: white;
+    box-shadow: 5px 5px 8px rgba(0,0,0,0.3);
+    padding:10px;
+    border-radius: 5px;
+    
+}
