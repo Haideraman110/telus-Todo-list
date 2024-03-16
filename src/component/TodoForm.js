@@ -52,47 +52,58 @@ const TodoForm = ({ addformdata }) => {
   return (
     <>
       <Box
+      style={{backgroundColor:'white'}}
+      clone
       component="form"
       sx={{
         width: '100%',
         maxWidth: '100%',
         p:1,
+        mb:2
       }}
       noValidate
       autoComplete="off"
       onSubmit={handleSubmit}
     >
       <TextField
+        className='textfield'
         margin="dense"
         fullWidth
         id="email"
         label="Email"
+        placeholder='Enter Your Email'
         type="email"
         name="email"
         value={formdata.email}
+        variant='filled'
         onChange={handleChange}
         InputLabelProps={{
+          style: {fontSize: 14},
           shrink: true,
         }}
         error={errors.email !== ''}
         helperText={errors.email}
       />
       <TextField
+        className='textfield'
         margin="dense"
         fullWidth
         id="mobile"
         label="Mobile No"
+        variant='filled'
+        placeholder='Enter Your Mobile No'
         name="mobile"
         value={formdata.mobile}
         onChange={handleChange}
         type="text"
         InputLabelProps={{
+          style: {fontSize: 14},
           shrink: true,
         }}
         error={errors.mobile !== ''}
         helperText={errors.mobile}
       />
-      <Button sx={{p:1,fontSize:'1.4rem',fontWeight:'bold'}} type="submit" fullWidth variant="contained" style={{ backgroundColor: 'white',color:'black' }}>Add</Button>
+      <Button sx={{p:1,fontSize:'1.4rem',fontWeight:'bold'}} type="submit" fullWidth variant="contained" color='primary' >Add</Button>
     </Box>
 
       {/* <form onSubmit={handleSubmit}>
