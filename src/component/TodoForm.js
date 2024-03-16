@@ -51,49 +51,51 @@ const TodoForm = ({ addformdata }) => {
   }
   return (
     <>
-      {/* <Box
-        component="form"
-        sx={{
-          width: 500,
-          maxWidth: '100%',
+      <Box
+      component="form"
+      sx={{
+        width: '100%',
+        maxWidth: '100%',
+        p:1,
+      }}
+      noValidate
+      autoComplete="off"
+      onSubmit={handleSubmit}
+    >
+      <TextField
+        margin="dense"
+        fullWidth
+        id="email"
+        label="Email"
+        type="email"
+        name="email"
+        value={formdata.email}
+        onChange={handleChange}
+        InputLabelProps={{
+          shrink: true,
         }}
-        noValidate
-        autoComplete="off"
-      >
-        <form >
-          <TextField
-          margin="dense"
-            fullWidth
-            id="fullWidth"
-            label="Email"
-            type="email"
-            name='email'
-            value={formdata.email}
-            onChange={handleChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <TextField
-          margin="dense"
-            fullWidth
-            id="fullWidth"
-            label="Mobile No"
-            name='mobile'
-            value={formdata.mobile}
-            onChange={handleChange}
-            type="text"
-            InputLabelProps={{
-              shrink: true,
-            }}
-          />
-          <Button onSubmit={handleSubmit} fullWidth variant="contained" style={{backgroundColor:'pink'}}>Add</Button>
+        error={errors.email !== ''}
+        helperText={errors.email}
+      />
+      <TextField
+        margin="dense"
+        fullWidth
+        id="mobile"
+        label="Mobile No"
+        name="mobile"
+        value={formdata.mobile}
+        onChange={handleChange}
+        type="text"
+        InputLabelProps={{
+          shrink: true,
+        }}
+        error={errors.mobile !== ''}
+        helperText={errors.mobile}
+      />
+      <Button sx={{p:1,fontSize:'1.4rem',fontWeight:'bold'}} type="submit" fullWidth variant="contained" style={{ backgroundColor: 'white',color:'black' }}>Add</Button>
+    </Box>
 
-        </form>
-
-
-      </Box> */}
-      <form onSubmit={handleSubmit}>
+      {/* <form onSubmit={handleSubmit}>
         <label htmlFor='email' className='form-label'>Email</label>
         <input type='email' className='form-control' name='email' value={formdata.email} onChange={handleChange} placeholder='Enter your email' />
 
@@ -105,7 +107,7 @@ const TodoForm = ({ addformdata }) => {
         {errors.mobile ? <p style={{ color: 'red' }}>{errors.mobile}</p> : ''}
 
         <button type='btn' className='btn btn-danger my-3 w-100'>Add</button>
-      </form>
+      </form> */}
 
     </>
   )
