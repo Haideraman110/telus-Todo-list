@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-const TodoForm = ({ addformdata }) => {
+const TodoForm = ({ addformdata, datastodo }) => {
   const initialvalue = {
     email: '',
     mobile: ''
@@ -27,84 +27,102 @@ const TodoForm = ({ addformdata }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (!formdata.email || !formdata.email.includes('@')) {
-      setErrors({
-        ...errors,
-        email: 'Please Enter the Valid Email'
 
-      })
-      return
-    }
-    if (!formdata.mobile || formdata.mobile.length !== 10) {
-      setErrors({
-        ...errors,
-        mobile: 'Please Enter valid 10 digit number'
+    const formerros = {}
 
-      })
-      return
+    if (!formdata.email) {
+      formerros.email = 'Email is Required'             //adding email property to formerrors Object
     }
-    addformdata(formdata)   //lifting state up
-    setFormData(initialvalue)   //reset the form 
-    setErrors(errorinitial)    //reset the error after submit
+    else if (!formdata.email.includes('@')) {
+      formerros.email = 'Please Enter a Valid Email'
+    }
+    else {
+      formerros.email = ''
+    }
+
+
+    if (!formdata.mobile) {
+      formerros.mobile = 'Mobile number is Required'
+    }
+    else if (formdata.mobile.length !== 10) {
+      formerros.mobile = 'Length should be 10'
+    }
+    else {
+      formerros.mobile = ''
+    }
+
+
+    //checking duplicacy input data 
+    if (datastodo.some((val) => val.email === formdata.email || datastodo.some((val) => val.mobile === formdata.mobile))) {
+      alert('data is already present')
+      setFormData(initialvalue)
+    }
+    else {
+        addformdata(formdata)   //lifting state up
+        setFormData(initialvalue)   //reset the form
+
+    }
+
+    setErrors(formerros)    //passing error object to the state
 
 
   }
   return (
     <>
       <Box
-      style={{backgroundColor:'white'}}
-      clone
-      component="form"
-      sx={{
-        width: '100%',
-        maxWidth: '100%',
-        p:1,
-        mb:2
-      }}
-      noValidate
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <TextField
-        className='textfield'
-        margin="dense"
-        fullWidth
-        id="email"
-        label="Email"
-        placeholder='Enter Your Email'
-        type="email"
-        name="email"
-        value={formdata.email}
-        variant='filled'
-        onChange={handleChange}
-        InputLabelProps={{
-          style: {fontSize: 14},
-          shrink: true,
+        style={{ backgroundColor: 'white' }}
+        clone
+        component="form"
+        sx={{
+          width: '100%',
+          maxWidth: '100%',
+          p: 1,
+          mb: 2
         }}
-        error={errors.email !== ''}
-        helperText={errors.email}
-      />
-      <TextField
-        className='textfield'
-        margin="dense"
-        fullWidth
-        id="mobile"
-        label="Mobile No"
-        variant='filled'
-        placeholder='Enter Your Mobile No'
-        name="mobile"
-        value={formdata.mobile}
-        onChange={handleChange}
-        type="text"
-        InputLabelProps={{
-          style: {fontSize: 14},
-          shrink: true,
-        }}
-        error={errors.mobile !== ''}
-        helperText={errors.mobile}
-      />
-      <Button sx={{p:1,fontSize:'1.4rem',fontWeight:'bold'}} type="submit" fullWidth variant="contained" color='primary' >Add</Button>
-    </Box>
+        noValidate
+        autoComplete="off"
+        onSubmit={handleSubmit}
+      >
+        <TextField
+          className='textfield'
+          margin="dense"
+          fullWidth
+          id="email"
+          label="Email"
+          placeholder='Enter Your Email'
+          type="email"
+          name="email"
+          value={formdata.email}
+          variant='filled'
+          onChange={handleChange}
+          InputLabelProps={{
+            style: { fontSize: 14 },
+            shrink: true,
+          }}
+          error={errors.email !== ''}
+          helperText={errors.email}
+        />
+        <TextField
+          className='textfield'
+          margin="dense"
+          fullWidth
+          id="mobile"
+          label="Mobile No"
+          variant='filled'
+          placeholder='Enter Your Mobile No'
+          name="mobile"
+          value={formdata.mobile}
+          onChange={handleChange}
+          type="text"
+          InputLabelProps={{
+            style: { fontSize: 14 },
+            shrink: true,
+          }}
+          error={errors.mobile !== ''}
+          helperText={errors.mobile}
+        />
+        <Button sx={{ p: 1, fontSize: '1.4rem', fontWeight: 'bold' }} type="submit" fullWidth variant="contained" color='primary' >Add</Button>
+      </Box>
 
       {/* <form onSubmit={handleSubmit}>
         <label htmlFor='email' className='form-label'>Email</label>

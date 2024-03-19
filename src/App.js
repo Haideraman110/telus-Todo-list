@@ -4,7 +4,7 @@ import tododata from "./data/tododata";
 
 
 function App() {
-  const [datastodo,setTodoData]=useState(tododata)
+  const [datastodo,setTodoData]=useState([])
 
   const addformdata=(inpdata)=>{
     setTodoData([...datastodo,{

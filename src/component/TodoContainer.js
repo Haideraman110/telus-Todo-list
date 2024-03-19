@@ -11,7 +11,7 @@ const TodoContainer = ({datastodo,addformdata,handleDelete}) => {
         <div className='row'>
             <div className='col'>
               {/* todo Form */}
-              <TodoForm addformdata={addformdata}/>
+              <TodoForm addformdata={addformdata} datastodo={datastodo}/>
               {/* map call a function for each array element and pss the data to another comp by using props  */}
               {
                 datastodo.map((val)=>
